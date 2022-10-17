@@ -34,7 +34,7 @@ def pregunta_01():
     # Recorrer la segunda columna de cada fila y almacenar la sumatoria de valores.
     for row in data: summatory = summatory + int(row[1])
 
-    # Imprimir el resultado 
+    # Imprimir el resultado. 
     print (summatory)
     
     return
