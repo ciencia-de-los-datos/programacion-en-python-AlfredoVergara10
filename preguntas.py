@@ -22,7 +22,19 @@ def pregunta_01():
 
     """
     
-    333
+    # Cargar el archivo en una variable.
+    Data = open ('data.csv', 'r').readlines()
+    # Obtener una lista de filas con un salto de línea ('\n') como delimitador.
+    Data = [row.replace('\n', '') for row in Data]
+    # Obtener una lista de listas con una tabulación ('\t') como delimitadores.
+    Data = [row.split('\t') for row in Data]
+    # Inicializar la sumatoria de los valores.
+    sumatory = 0
+    # Recorrer la segunda columna de cada fila y almacenar la sumatoria de valores.
+    for row in Data: sumatory = sumatory + int(row[1])
+    
+    # Imprimir el resultado 
+    print (summatory)
     
     return
 
