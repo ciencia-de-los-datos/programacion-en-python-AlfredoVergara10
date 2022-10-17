@@ -28,10 +28,12 @@ def pregunta_01():
     data = [row.replace('\n', '') for row in data]
     # Obtener una lista de listas con una tabulación ('\t') como delimitadores.
     data = [row.split('\t') for row in data]
+
     # Inicializar la sumatoria de los valores.
     summatory = 0
     # Recorrer la segunda columna de cada fila y almacenar la sumatoria de valores.
     for row in Data: summatory = summatory + int(row[1])
+
     # Imprimir el resultado 
     print (summatory)
     
