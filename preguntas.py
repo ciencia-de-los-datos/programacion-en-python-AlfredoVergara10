@@ -31,9 +31,9 @@ data = [row.split("\t") for row in data]
 summatory = 0 
 for row in data: summatory = summatory + int(row[1])
         
-print (summatory)
 
-    return
+
+    return print (summatory)
 
 
 
