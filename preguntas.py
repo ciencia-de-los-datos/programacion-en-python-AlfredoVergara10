@@ -196,6 +196,24 @@ def pregunta_08():
     ]
 
     """
+    
+    data = open('data.csv', 'r').readlines()
+    data = [row.replace('\n', '') for row in data]
+    data = [row.split('\t') for row in data]
+    
+    unique = list(set([row[1] for row in data]))
+    unique.sort()
+    
+    for key in unique:
+        result = []
+        for row in data:
+            if row[1] == key:
+                result.append(row[0])
+                
+    result = list(set(result))
+    result.sort()
+    print((key, result))
+   
     return
 
 
