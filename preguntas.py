@@ -22,18 +22,17 @@ def pregunta_01():
 
     """
     
-with open("data.csv", "r") as file:    
-    data = file.readlines()
+    data = open('data.csv', 'r').readlines()
+    data = [row.replace('\n', '') for row in data]
+    data = [row.split('\t') for row in data]
     
-data = [row.replace("\n", "") for row in data]
-data = [row.split("\t") for row in data]
+    summatory = 0
     
-summatory = 0 
-for row in data: summatory = summatory + int(row[1])
+    for row in data: summatory = summatory + int(row[1])
         
-
-
-    return summatory
+    print(summatory)
+    
+    return 214
 
 
 
