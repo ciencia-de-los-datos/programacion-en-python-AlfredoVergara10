@@ -22,9 +22,9 @@ def pregunta_01():
 
     """
     
-    data = open('data.csv', 'r').readlines()
-    data = [row.replace('\n', '') for row in data]
-    data = [row.split('\t') for row in data]
+    data = open("data.csv", "r").readlines()
+    data = [row.replace("\n", "") for row in data]
+    data = [row.split("\t") for row in data]
     
     summatory = 0
     
@@ -52,14 +52,14 @@ def pregunta_02():
 
     """
     
-    data = open('data.csv', 'r').readlines()
-    data = [row.replace('\n', '') for row in data]
-    data = [row.split('\t') for row in data]
+    data = open("data.csv", "r").readlines()
+    data = [row.replace("\n", "") for row in data]
+    data = [row.split("\t") for row in data]
     unique = list(set([row[0] for row in data]))
     unique.sort()
-    for key in unique: print(key + ',' + str([row[0] for row in data].count(key)))
+    
           
-    return
+    return for key in unique: print(key + "," + str([row[0] for row in data].count(key)))
 
 
 def pregunta_03():
