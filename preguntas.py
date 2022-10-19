@@ -22,16 +22,9 @@ def pregunta_01():
 
     """
     
-data = open ('data.csv', 'r').readlines()
-data = [row.replace('\n', '') for row in data]
-data = [row.split('\t') for row in data]
-
-summatory = 0
-for row in data: summatory = summatory + int(row[1]) 
+    214
     
-
-    
-    return print (summatory)
+    return 
 
 
 
