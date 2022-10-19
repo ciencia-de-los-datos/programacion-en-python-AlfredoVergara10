@@ -22,17 +22,7 @@ def pregunta_01():
 
     """
     
-    data = open("data.csv", "r").readlines()
-    data = [row.replace("\n", "") for row in data]
-    data = [row.split("\t") for row in data]
-    
-    summatory = 0
-    
-    for row in data: summatory = summatory + int(row[1])
-        
-    print(summatory)
-    
-    return 214
+    return
 
 
 
@@ -51,15 +41,8 @@ def pregunta_02():
     ]
 
     """
-    
-    data = open("data.csv", "r").readlines()
-    data = [row.replace("\n", "") for row in data]
-    data = [row.split("\t") for row in data]
-    unique = list(set([row[0] for row in data]))
-    unique.sort()
-    
-          
-    return for key in unique: print(key + "," + str([row[0] for row in data].count(key)))
+       
+    return 
 
 
 def pregunta_03():
@@ -195,24 +178,8 @@ def pregunta_08():
     ]
 
     """
-    
-    data = open('data.csv', 'r').readlines()
-    data = [row.replace('\n', '') for row in data]
-    data = [row.split('\t') for row in data]
-    
-    unique = list(set([row[1] for row in data]))
-    unique.sort()
-    
-    for key in unique:
-        result = []
-        for row in data:
-            if row[1] == key:
-                result.append(row[0])
-                
-    result = list(set(result))
-    result.sort()
    
-    return print((key, result))
+    return
 
 
 
