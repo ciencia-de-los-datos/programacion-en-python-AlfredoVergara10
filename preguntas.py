@@ -30,10 +30,8 @@ summatory = 0
     
 for row in data: summatory = summatory + int(row[1])
         
-print(summatory)
    
-    return 
-
+    return summatory
 
 
 
