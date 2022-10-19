@@ -212,9 +212,9 @@ def pregunta_08():
                 
     result = list(set(result))
     result.sort()
-    print((key, result))
    
-    return
+    return print((key, result))
+
 
 
 def pregunta_09():
