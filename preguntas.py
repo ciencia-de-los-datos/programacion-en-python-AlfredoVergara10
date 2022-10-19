@@ -33,7 +33,7 @@ for row in data: summatory = summatory + int(row[1])
         
 
 
-    return print (summatory)
+    return summatory
 
 
 
