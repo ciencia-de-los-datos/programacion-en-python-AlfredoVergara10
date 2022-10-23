@@ -13,6 +13,11 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 """
 
 
+from cgitb import reset
+import re
+from unittest import result
+
+
 def pregunta_01():
     """
     Retorne la suma de la segunda columna.
@@ -21,9 +26,15 @@ def pregunta_01():
     214
 
     """
-    
-    return
 
+    data = open('data.csv', 'r').readlines()
+    data = [row.replace('\n', '') for row in data]
+    data = [row.split('\t') for row in data]
+
+    summatory = 0
+    for row in data: summatory = summatory + int(row[1])
+
+    return summatory
 
 
 def pregunta_02():
@@ -41,8 +52,18 @@ def pregunta_02():
     ]
 
     """
-       
-    return 
+
+    data = open('data.csv', 'r').readlines()
+    data = [row.replace('\n', '') for row in data]
+    data = [row.split('\t') for row in data]
+
+    unique = list(set([row[0] for row in data]))
+    unique.sort()
+
+    result = []
+    for key in unique: result.append((key, [row[0] for row in data].count(key)))
+    
+    return result
 
 
 def pregunta_03():
@@ -60,7 +81,22 @@ def pregunta_03():
     ]
 
     """
-    return
+
+    data = open('data.csv', 'r').readlines()
+    data = [row.replace('\n', '') for row in data]
+    data = [row.split('\t') for row in data]
+
+    unique = list(set([row[0] for row in data]))
+    unique.sort()
+
+    result = [] 
+    for key in unique:
+        summatory = 0
+        for row in data:
+            if row[0] == key: summatory = summatory + int(row[1])
+        result.append((key, summatory))
+
+    return result
 
 
 def pregunta_04():
@@ -85,7 +121,18 @@ def pregunta_04():
     ]
 
     """
-    return
+
+    data = open('data.csv', 'r').readlines()
+    data = [row.replace('\n', '') for row in data]
+    data = [row.split('\t') for row in data]
+
+    unique = list(set([row[2].split("-")[1] for row in data]))
+    unique.sort()
+
+    result = []
+    for key in unique: result.append((key, [row[2].split("-")[1] for row in data].count(key)))
+
+    return result
 
 
 def pregunta_05():
@@ -103,8 +150,27 @@ def pregunta_05():
     ]
 
     """
-        
-    return
+
+    import math
+
+    data = open('data.csv', 'r').readlines()
+    data = [row.replace('\n', '') for row in data]
+    data = [row.split('\t') for row in data]
+
+    unique = list(set([row[0] for row in data]))
+    unique.sort()
+
+    result = []
+    for key in unique:
+        maximum = -math.inf
+        minimum = math.inf
+        for row in data:
+            if row[0] == key:
+                if int(row[1]) > maximum: maximum = int(row[1])
+                if int(row[1]) < minimum: minimum = int(row[1])
+        result.append((key, maximum, minimum))
+
+    return result
 
 
 def pregunta_06():
@@ -129,7 +195,33 @@ def pregunta_06():
     ]
 
     """
-    return
+
+    import math
+
+    data = open('data.csv', 'r').readlines()
+    data = [row.replace('\n', '') for row in data]
+    data = [row.split('\t') for row in data]
+
+    for i in range(len(data)):
+        data[i][4] = data[i][4].split(',')
+        for j in range(len(data[i][4])):
+            data[i][4][j] = data[i][4][j].split(':')
+
+    unique = list(set([dictionary[0] for row in data for dictionary in row[4]]))
+    unique.sort()
+
+    result = []
+    for key in unique:
+        maximum = -math.inf
+        minimum = math.inf
+        for row in data:
+            for dictionary in row[4]:
+                if dictionary[0] == key:
+                    if int(dictionary[1]) > maximum: maximum = int(dictionary[1])
+                    if int(dictionary[1]) < minimum: minimum = int(dictionary[1])
+        result.append((key, minimum, maximum))
+
+    return result
 
 
 def pregunta_07():
@@ -153,7 +245,23 @@ def pregunta_07():
     ]
 
     """
-    return
+
+    data = open('data.csv', 'r').readlines()
+    data = [row.replace('\n', '') for row in data]
+    data = [row.split('\t') for row in data]
+
+    unique = list(set([row[1] for row in data]))
+    unique.sort()
+    
+    answer = []
+    for key in unique:
+        result = []
+        for row in data:
+            if row[1] == key:
+                result.append(row[0])
+        answer.append((int(key), result))
+
+    return answer
 
 
 def pregunta_08():
@@ -178,9 +286,27 @@ def pregunta_08():
     ]
 
     """
-   
-    return
 
+    data = open('data.csv', 'r').readlines()
+    data = [row.replace('\n', '') for row in data]
+    data = [row.split('\t') for row in data]
+
+    unique = list(set([row[1] for row in data]))
+    unique.sort()
+
+    answer = []
+    for key in unique:
+        result = []
+        for row in data:
+            if row[1] == key:
+                result.append(row[0])
+
+        result = list(set(result))
+        result.sort()
+        
+        answer.append((int(key), result))
+    
+    return answer
 
 
 def pregunta_09():
@@ -203,7 +329,23 @@ def pregunta_09():
     }
 
     """
-    return
+    
+    data = open('data.csv', 'r').readlines()
+    data = [row.replace('\n', '') for row in data]
+    data = [row.split('\t') for row in data]
+
+    for i in range(len(data)):
+        data[i][4] = data[i][4].split(',')
+        for j in range(len(data[i][4])):
+            data[i][4][j] = data[i][4][j].split(':')
+
+    unique = list(set([dictionary[0] for row in data for dictionary in row[4]]))
+    unique.sort()
+
+    result = {}
+    for key in unique: result[key] = [dictionary[0] for row in data for dictionary in row[4]].count(key)
+
+    return result
 
 
 def pregunta_10():
@@ -224,7 +366,19 @@ def pregunta_10():
 
 
     """
-    return
+
+    data = open('data.csv', 'r').readlines()
+    data = [row.replace('\n', '') for row in data]
+    data = [row.split('\t') for row in data]
+
+    for i in range(len(data)):
+        data[i][4] = data[i][4].split(',')
+        data[i][3] = data[i][3].split(',')
+
+    result = []
+    for row in data: result.append((row[0], len(row[3]), len(row[4])))
+
+    return result
 
 
 def pregunta_11():
@@ -245,7 +399,27 @@ def pregunta_11():
 
 
     """
-    return
+    
+    data = open('data.csv', 'r').readlines()
+    data = [row.replace('\n', '') for row in data]
+    data = [row.split('\t') for row in data]
+
+    for i in range(len(data)):
+        data[i][3] = data[i][3].split(',')
+
+    unique = list(set([key for row in data for key in row[3]]))
+    unique.sort()
+
+    result = {}
+    for key in unique:
+        summatory = 0
+        for row in data:
+            for value in row[3]:
+                if value == key:
+                    summatory = summatory + int(row[1])
+        result[key] = summatory
+        
+    return result
 
 
 def pregunta_12():
@@ -263,4 +437,20 @@ def pregunta_12():
     }
 
     """
-    return
+
+    data = open('data.csv', 'r').readlines()
+    data = [row.replace('\n', '') for row in data]
+    data = [row.split('\t') for row in data]
+
+    for i in range(len(data)):
+        data[i][4] = data[i][4].split(',')
+        for j in range(len(data[i][4])):
+            data[i][4][j] = data[i][4][j].split(':')
+    
+    unique = list(set([row[0] for row in data]))
+    unique.sort()
+
+    result = dict.fromkeys(unique, 0)
+    for row in data: result[row[0]] = result[row[0]] + sum(int(dictionary[1]) for dictionary in row[4])
+
+    return result
